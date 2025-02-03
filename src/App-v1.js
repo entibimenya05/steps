@@ -7,13 +7,6 @@ const messages = [
 ];
 
 export default function App() {
-  return (
-    <div>
-      <Steps />
-    </div>
-  );
-}
-function Steps() {
   //const step = 1; we want to make this step dynamic by adding a new piece of state
   const [step, setStep] = useState(1); //1 is the default value
   //to imlement Open and close x;
@@ -69,67 +62,22 @@ function Steps() {
             step {step}:{messages[step - 1]}
           </p>
           <div className="buttons">
-            {/*making a reusable button instead of these two*/}
-            {/* <button
+            <button
               style={{ backgroundColor: "#7950f2", color: "#fff" }}
               //onClick={() => alert("Prevoius")} ;will replace this callbackfunction by an eventhandler function as defined above
               onClick={handlePrevious} //here we are just passing in the function value; we are not calling it
             >
               Previous
-            </button>*/}
-            {/*<button
-            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            onClick={handleNext}
-          >
-            Next
-          </button>*/}
-            {/*Replace the above with the button we just created*/}
-            <Button
-              bgColor="#7950f2"
-              textColor="#fff"
-              onClick={handlePrevious}
-              text="Previous"
-              // emoji="👈"
-            >
-              <span>👉</span>Previous
-            </Button>
-            <Button
-              bgColor="#7950f2"
-              textColor="#fff"
+            </button>
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
               onClick={handleNext}
-              text="Next"
-              // emoji="👉"
             >
-              Next<span>👉</span>
-            </Button>
+              Next
+            </button>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-//making a reusable button instead of these two
-//1. create a new function called Button and pass in all the props
-//2. use the newly created button as a component and passing  all these data as props the props
-//3. if we want to add an emoji, first accept it as a props in the function Button
-//4. then place it where you want whithin that function Button component by creating a span and in there we put our emoji
-//5 Finally pass that emoji in the component to be returned as a prop
-function Button({
-  textColor,
-  bgColor,
-  onClick,
-  // text, emoji replace thes with the children props
-  children,
-}) {
-  return (
-    <button
-      style={{ backgroundColor: bgColor, color: textColor }}
-      onClick={onClick}
-    >
-      {/* <span>{emoji}</span>
-      {text}*/}
-      {children}
-    </button>
   );
 }
