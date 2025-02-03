@@ -10,6 +10,14 @@ export default function App() {
   return (
     <div>
       <Steps />
+      <StepMessage step={1}>
+        <p>Pass in content</p>
+        <p>👌</p>
+      </StepMessage>
+      <StepMessage step={2}>
+        <p>Read children props</p>
+        <p>👶</p>
+      </StepMessage>
     </div>
   );
 }
@@ -65,9 +73,25 @@ function Steps() {
             <div className={step >= 2 ? "active" : ""}>2</div>
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
-          <p className="message">
-            step {step}:{messages[step - 1]}
-          </p>
+          {/*Building a reusable component to display a message*/}
+          {/* <p className="message">
+            <h3>step {step}</h3> {messages[step - 1]}
+          </p>*/}
+          {/*let's now use that StepMessage*/}
+          <StepMessage step={step}>
+            {messages[step - 1]}
+            <div classname="buttons">
+              {" "}
+              {/*for styling the button purpose*/}
+              <Button
+                bgColor="#e7e7e7"
+                textColor="#333"
+                onClick={() => alert("Learn how to ${{messages[step - 1]}}")}
+              >
+                Learn how
+              </Button>
+            </div>
+          </StepMessage>
           <div className="buttons">
             {/*making a reusable button instead of these two*/}
             {/* <button
@@ -131,5 +155,13 @@ function Button({
       {text}*/}
       {children}
     </button>
+  );
+}
+//more reusable component called StepMessage
+function StepMessage({ step, children }) {
+  return (
+    <div className="message">
+      <h3>step {step}</h3> {children}
+    </div>
   );
 }
