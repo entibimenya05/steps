@@ -81,7 +81,6 @@ function Steps() {
           <StepMessage step={step}>
             {messages[step - 1]}
             <div classname="buttons">
-              {" "}
               {/*for styling the button purpose*/}
               <Button
                 bgColor="#e7e7e7"
@@ -108,11 +107,12 @@ function Steps() {
             Next
           </button>*/}
             {/*Replace the above with the button we just created*/}
+            {/*In this exercise we want to create a reusable button instead of these two*/}
             <Button
               bgColor="#7950f2"
               textColor="#fff"
               onClick={handlePrevious}
-              text="Previous"
+              // text="Previous"
               // emoji="👈"
             >
               <span>👉</span>Previous
@@ -121,7 +121,7 @@ function Steps() {
               bgColor="#7950f2"
               textColor="#fff"
               onClick={handleNext}
-              text="Next"
+              // text="Next"
               // emoji="👉"
             >
               Next<span>👉</span>
